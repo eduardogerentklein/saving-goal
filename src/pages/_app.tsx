@@ -1,6 +1,8 @@
 import Head from 'next/head'
 import type { AppProps } from 'next/app'
 
+import { Header } from '../components/header'
+
 import '../styles/globals.css'
 import '../styles/tailwind.css'
 
@@ -12,6 +14,7 @@ const App = ({ Component, pageProps }: AppProps) => (
       <meta name='viewport' content='initial-scale=1.0, width=device-width' />
       <link rel='shortcut icon' type='image/x-icon' href='/favicon.png' />
     </Head>
+    <Header />
     <Component {...pageProps} />
   </>
 )
