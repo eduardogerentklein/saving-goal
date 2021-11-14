@@ -1,5 +1,7 @@
-import type { NextPage } from 'next'
 import styled from 'styled-components'
+
+import type { NextPage } from 'next'
+import Image from 'next/image'
 
 import { Button } from '../components/button'
 import { Box } from '../components/box'
@@ -46,6 +48,7 @@ const Index: NextPage = () => (
       <StyledSpan fontWeight={600}>saving goal.</StyledSpan>
     </StyledH1>
     <StyledBox>
+      <Image src='/icons/house.svg' alt='House icon' width={100} height={50} />
       <Button>Confirm</Button>
     </StyledBox>
   </Main>
