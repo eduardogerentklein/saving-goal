@@ -2,14 +2,12 @@ import styled from 'styled-components'
 import Image from 'next/image'
 
 const StyledHeader = styled.header.attrs({
-  className: 'bg-white-25 py-4 px-11'
+  className: 'bg-white-25'
 })`
   padding: 24px 56px 24px 56px;
 
   @media (max-width: 640px) {
-    header {
-      padding: 24px 16px 24px 16px;
-    }
+    padding: 16px 16px 16px 16px;
 
     img {
       height: 24px !important;

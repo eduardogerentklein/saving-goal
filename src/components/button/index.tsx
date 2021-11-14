@@ -9,8 +9,7 @@ interface ButtonProps {
 export const Button = styled.button.attrs({
   className: 'p-3 font-3 rounded-5'
 })<ButtonProps>`
-  outline: 'none';
-  border: 'none';
+  border: none;
   color: ${props => props.color};
   background-color: ${props => props.backgroundColor};
   width: ${props => props.width};
@@ -22,6 +21,10 @@ export const Button = styled.button.attrs({
 
   &:hover {
     opacity: 0.9;
+  }
+
+  @media (max-width: 640px) {
+    width: 100%;
   }
 `
 
