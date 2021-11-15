@@ -48,7 +48,7 @@ const Index: NextPage = () => (
       <StyledSpan fontWeight={600}>saving goal.</StyledSpan>
     </StyledH1>
     <StyledBox>
-      <Image src='/icons/house.svg' alt='House icon' width={100} height={50} />
+      <Image src='/icons/house.svg' alt='House icon' width={64} height={64} />
       <Button>Confirm</Button>
     </StyledBox>
   </Main>

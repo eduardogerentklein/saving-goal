@@ -4,12 +4,19 @@ interface ButtonProps {
   backgroundColor?: string
   color?: string
   width?: string
+  fontWeight?: number
 }
 
-export const Button = styled.button.attrs({
-  className: 'p-3 font-3 rounded-5'
-})<ButtonProps>`
+export const Button = styled.button<ButtonProps>`
+  padding-top: 16px;
+  padding-bottom: 16px;
+  padding-left: 16px;
+  padding-right: 16px;
+  border-radius: 32px;
+  font-size: 16px;
   border: none;
+
+  font-weight: ${props => props.fontWeight};
   color: ${props => props.color};
   background-color: ${props => props.backgroundColor};
   width: ${props => props.width};
@@ -31,5 +38,6 @@ export const Button = styled.button.attrs({
 Button.defaultProps = {
   backgroundColor: 'var(--primary-color)',
   color: 'white',
-  width: '320px'
+  width: '320px',
+  fontWeight: 600
 }
