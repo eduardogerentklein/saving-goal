@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import Image from 'next/image'
 
-import { Span } from '../typography'
+import { Span, Label } from '../typography'
 import { Box } from '../box'
 
 const Container = styled(Box)`
@@ -78,7 +78,7 @@ const Month = styled(Span)`
 
   @media (max-width: 640px) {
     font-size: var(--font-size-2);
-    line-height: 21px;
+    line-height: var(--line-height-3);
   }
 `
 
@@ -86,46 +86,49 @@ const Year = styled(Span)`
   color: var(--gray-color-25);
 
   font-size: var(--font-size-2);
-  line-height: 21px;
+  line-height: var(--line-height-3);
   @media (max-width: 640px) {
     font-size: var(--font-size-1);
-    line-height: 16px;
+    line-height: var(--line-height-1);
   }
 `
 
 export const MonthPicker = () => {
   return (
-    <Container aria-label='Month picker box'>
-      <ToggleLeftButton
-        type='button'
-        title='Back month button'
-        aria-label='Back month button'
-      >
-        <Image
-          src='/icons/chevron-left.svg'
-          width='24'
-          height='24'
-          alt='Back month icon'
-        />
-      </ToggleLeftButton>
+    <>
+      <Label>Reach goal by</Label>
+      <Container aria-label='Month picker box'>
+        <ToggleLeftButton
+          type='button'
+          title='Back month button'
+          aria-label='Back month button'
+        >
+          <Image
+            src='/icons/chevron-left.svg'
+            width='24'
+            height='24'
+            alt='Back month icon'
+          />
+        </ToggleLeftButton>
 
-      <MonthYearBox>
-        <Month>February</Month>
-        <Year as='small'>2021</Year>
-      </MonthYearBox>
+        <MonthYearBox>
+          <Month>February</Month>
+          <Year as='small'>2021</Year>
+        </MonthYearBox>
 
-      <ToggleRightButton
-        type='button'
-        title='Forward month button'
-        aria-label='Forward month button'
-      >
-        <Image
-          src='/icons/chevron-right.svg'
-          width='24'
-          height='24'
-          alt='Forward month icon'
-        />
-      </ToggleRightButton>
-    </Container>
+        <ToggleRightButton
+          type='button'
+          title='Forward month button'
+          aria-label='Forward month button'
+        >
+          <Image
+            src='/icons/chevron-right.svg'
+            width='24'
+            height='24'
+            alt='Forward month icon'
+          />
+        </ToggleRightButton>
+      </Container>
+    </>
   )
 }

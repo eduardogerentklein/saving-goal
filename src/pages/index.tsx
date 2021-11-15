@@ -9,7 +9,10 @@ import { MonthPicker } from '../components/input'
 import { Span, H1 } from '../components/typography'
 
 const Main = styled.main`
-  padding: 48px 0px 48px 0px;
+  padding-top: 48px;
+  padding-bottom: 48px;
+  padding-left: 0px;
+  padding-right: 0px;
   width: 560px;
   margin: 0 auto;
 

@@ -8,13 +8,13 @@ interface ButtonProps {
 }
 
 export const Button = styled.button<ButtonProps>`
-  padding-top: 16px;
-  padding-bottom: 16px;
-  padding-left: 16px;
-  padding-right: 16px;
-  border-radius: 32px;
+  padding-top: var(--spacing-3);
+  padding-bottom: var(--spacing-3);
+  padding-left: var(--spacing-3);
+  padding-right: var(--spacing-3);
+  border-radius: var(--border-radius-5);
   line-height: 1.2;
-  font-size: 16px;
+  font-size: var(--font-size-3);
   border: none;
 
   font-weight: ${props => props.fontWeight};

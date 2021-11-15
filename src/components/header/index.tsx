@@ -3,10 +3,16 @@ import Image from 'next/image'
 
 const StyledHeader = styled.header`
   background-color: var(--white-color-25);
-  padding: 24px 56px 24px 56px;
+  padding-top: var(--spacing-4);
+  padding-bottom: var(--spacing-4);
+  padding-left: var(--spacing-11);
+  padding-right: var(--spacing-11);
 
   @media (max-width: 640px) {
-    padding: 16px 16px 16px 16px;
+    padding-top: var(--spacing-3);
+    padding-bottom: var(--spacing-3);
+    padding-right: var(--spacing-3);
+    padding-left: var(--spacing-3);
 
     img {
       height: 24px !important;

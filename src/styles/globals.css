@@ -35,6 +35,11 @@ body {
   --font-size-6: 24px;
   --font-size-7: 32px;
 
+  --line-height-1: 16px;
+  --line-height-2: 19px;
+  --line-height-3: 21px;
+  --line-height-4: 24px;
+
   --spacing-1: 4px;
   --spacing-2: 12px;
   --spacing-3: 16px;
