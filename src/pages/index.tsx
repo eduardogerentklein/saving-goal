@@ -3,8 +3,9 @@ import styled from 'styled-components'
 import type { NextPage } from 'next'
 import Image from 'next/image'
 
-import { Button } from '../components/button'
 import { Box } from '../components/box'
+import { Button } from '../components/button'
+import { MonthPicker } from '../components/input'
 import { Span, H1 } from '../components/typography'
 
 const Main = styled.main`
@@ -49,6 +50,7 @@ const Index: NextPage = () => (
     </StyledH1>
     <StyledBox>
       <Image src='/icons/house.svg' alt='House icon' width={64} height={64} />
+      <MonthPicker></MonthPicker>
       <Button>Confirm</Button>
     </StyledBox>
   </Main>

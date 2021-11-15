@@ -1,9 +1,8 @@
 import styled from 'styled-components'
 import Image from 'next/image'
 
-const StyledHeader = styled.header.attrs({
-  className: 'bg-white-25'
-})`
+const StyledHeader = styled.header`
+  background-color: var(--white-color-25);
   padding: 24px 56px 24px 56px;
 
   @media (max-width: 640px) {
