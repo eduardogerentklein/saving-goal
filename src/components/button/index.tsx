@@ -13,6 +13,7 @@ export const Button = styled.button<ButtonProps>`
   padding-left: 16px;
   padding-right: 16px;
   border-radius: 32px;
+  line-height: 1.2;
   font-size: 16px;
   border: none;
 
