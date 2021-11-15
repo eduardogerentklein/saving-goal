@@ -5,7 +5,7 @@ import Image from 'next/image'
 
 import { Box } from '../components/box'
 import { Button } from '../components/button'
-import { MonthPicker } from '../components/input'
+import { Currency, MonthPicker } from '../components/input'
 import { Span, H1 } from '../components/typography'
 
 const Main = styled.main`
@@ -53,6 +53,7 @@ const Index: NextPage = () => (
     </StyledH1>
     <StyledBox>
       <Image src='/icons/house.svg' alt='House icon' width={64} height={64} />
+      <Currency></Currency>
       <MonthPicker></MonthPicker>
       <Button>Confirm</Button>
     </StyledBox>
