@@ -47,6 +47,7 @@ const ToggleButton = styled.button`
 
   &:hover:enabled {
     background-color: var(--white-color-75);
+    border-radius: var(--spacing-1);
   }
 
   @media (max-width: 640px) {

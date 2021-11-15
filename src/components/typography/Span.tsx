@@ -1,5 +1,7 @@
 import styled from 'styled-components'
 
+import { Color, FontFamily } from '../../utils/constant'
+
 interface SpanProps {
   fontFamily?: string
   fontSize?: string
@@ -9,17 +11,15 @@ interface SpanProps {
 }
 
 export const Span = styled.span<SpanProps>`
-  font-family: ${props => props.fontFamily};
+  color: ${props => `var(${Color[props.color || 'primary']})`};
+  font-family: ${props => FontFamily[props.fontFamily || 'workSans']};
   font-size: ${props => props.fontSize};
   font-weight: ${props => props.fontWeight};
-  color: ${props => props.color};
   text-align: ${props => props.textAlign};
 `
 
 Span.defaultProps = {
-  fontFamily: 'Work Sans, sans-serif',
   fontWeight: 400,
   fontSize: '20px',
-  color: 'var(--primary-color)',
   textAlign: 'center'
 }

@@ -22,6 +22,12 @@ const Main = styled.main`
     padding-right: 0px;
   }
 `
+
+const TitleBox = styled(Box)`
+  display: flex;
+  margin-bottom: var(--spacing-5);
+`
+
 const StyledBox = styled(Box)`
   background-color: var(--white-color-25);
   padding: 35px 40px 35px 40px;
@@ -45,6 +51,47 @@ const StyledSpan = styled(Span)`
     line-height: 21.6px;
   }
 `
+
+const InputContainer = styled(Box)`
+  display: flex;
+  flex-direction: row;
+
+  @media (max-width: 640px) {
+    flex-direction: column;
+  }
+`
+
+const ConfirmBox = styled(Box)`
+  display: flex;
+  justify-content: center;
+`
+
+const GoalBox = styled(Box)`
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+
+  margin-left: var(--spacing-4);
+`
+
+const HouseText = styled(Span)`
+  font-weight: var(--font-weight-2);
+  font-size: var(--font-size-6);
+  line-height: 28.8px;
+
+  margin-bottom: var(--spacing-1);
+  @media (max-width: 640px) {
+    font-size: var(--font-size-5);
+    line-height: 24px;
+  }
+`
+
+const SavingGoalText = styled(Span)`
+  font-size: var(--font-size-3);
+  line-height: 24px;
+`
+
 const Index: NextPage = () => (
   <Main>
     <StyledH1>
@@ -52,10 +99,32 @@ const Index: NextPage = () => (
       <StyledSpan fontWeight={600}>saving goal.</StyledSpan>
     </StyledH1>
     <StyledBox>
-      <Image src='/icons/house.svg' alt='House icon' width={64} height={64} />
-      <Currency></Currency>
-      <MonthPicker></MonthPicker>
-      <Button>Confirm</Button>
+      <TitleBox>
+        <Box>
+          <Image
+            src='/icons/house.svg'
+            alt='House icon'
+            width={64}
+            height={64}
+          />
+        </Box>
+
+        <GoalBox>
+          <HouseText color='gray-100' fontFamily='rubik'>
+            Buy a house
+          </HouseText>
+          <SavingGoalText color='gray-25'>Saving goal</SavingGoalText>
+        </GoalBox>
+      </TitleBox>
+
+      <InputContainer>
+        <Currency></Currency>
+        <MonthPicker></MonthPicker>
+      </InputContainer>
+
+      <ConfirmBox>
+        <Button>Confirm</Button>
+      </ConfirmBox>
     </StyledBox>
   </Main>
 )

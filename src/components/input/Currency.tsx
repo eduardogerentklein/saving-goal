@@ -52,6 +52,7 @@ const ImageContainer = styled(Box)`
 
 const Container = styled(Box)`
   position: relative;
+  margin-right: var(--spacing-3);
 `
 
 export const Currency = ({
@@ -77,6 +78,7 @@ export const Currency = ({
       type={type}
       disabled={disabled}
       onChange={onChange}
+      aria-label={label}
     ></CurrencyStyled>
   </Container>
 )
