@@ -5,6 +5,7 @@ interface ButtonProps {
   color?: string
   width?: string
   fontWeight?: number
+  disabled?: boolean
 }
 
 export const Button = styled.button<ButtonProps>`
@@ -40,5 +41,6 @@ Button.defaultProps = {
   backgroundColor: 'var(--primary-color)',
   color: 'white',
   width: '320px',
-  fontWeight: 600
+  fontWeight: 600,
+  disabled: false
 }

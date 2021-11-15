@@ -1,9 +1,7 @@
 import styled from 'styled-components'
 
 export const Label = styled.label`
-  margin-bottom: var(--spacing-1);
-
-  font-family: 'Work Sans, sans-serif';
+  font-family: Work Sans, sans-serif;
   font-size: var(--font-size-2);
   font-weight: var(--font-weight-1);
   line-height: var(--line-height-3);

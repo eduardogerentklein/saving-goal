@@ -14,6 +14,7 @@ const Container = styled(Box)`
   border-color: var(--white-color-75);
   border-radius: var(--spacing-1);
 
+  margin-top: var(--spacing-1);
   margin-bottom: var(--spacing-4);
   padding-top: var(--spacing-1);
   padding-bottom: var(--spacing-1);
@@ -95,7 +96,7 @@ const Year = styled(Span)`
 
 export const MonthPicker = () => {
   return (
-    <>
+    <Box>
       <Label>Reach goal by</Label>
       <Container aria-label='Month picker box'>
         <ToggleLeftButton
@@ -129,6 +130,6 @@ export const MonthPicker = () => {
           />
         </ToggleRightButton>
       </Container>
-    </>
+    </Box>
   )
 }
