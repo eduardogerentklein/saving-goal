@@ -41,6 +41,9 @@ const CurrencyStyled = styled.input`
   @media (max-width: 640px) {
     font-size: var(--font-size-5);
     line-height: var(--line-height-4);
+
+    margin-bottom: var(--spacing-3);
+    margin-right: 0;
   }
 `
 

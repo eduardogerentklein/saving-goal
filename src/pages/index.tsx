@@ -25,6 +25,7 @@ const Main = styled.main`
 
 const TitleBox = styled(Box)`
   display: flex;
+  align-items: center;
   margin-bottom: var(--spacing-5);
 `
 
@@ -90,6 +91,11 @@ const HouseText = styled(Span)`
 const SavingGoalText = styled(Span)`
   font-size: var(--font-size-3);
   line-height: 24px;
+
+  @media (max-width: 640px) {
+    font-size: var(--font-size-2);
+    line-height: 21px;
+  }
 `
 
 const Index: NextPage = () => (
@@ -100,14 +106,7 @@ const Index: NextPage = () => (
     </StyledH1>
     <StyledBox>
       <TitleBox>
-        <Box>
-          <Image
-            src='/icons/house.svg'
-            alt='House icon'
-            width={64}
-            height={64}
-          />
-        </Box>
+        <Image src='/icons/house.svg' alt='House icon' width={64} height={64} />
 
         <GoalBox>
           <HouseText color='gray-100' fontFamily='rubik'>
