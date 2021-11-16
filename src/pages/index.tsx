@@ -98,6 +98,17 @@ const SavingGoalText = styled(Span)`
   }
 `
 
+const MonthlyAmount = styled(Box)`
+  background-color: var(--white-color-25);
+  border-radius: var(--border-radius-2);
+
+  border-width: 1px;
+  border-style: solid;
+  border-color: var(--white-color-75);
+
+  box-shadow: 0px 16px 32px rgba(30, 42, 50, 0.08);
+`
+
 const Index: NextPage = () => (
   <Main>
     <StyledH1>
@@ -120,6 +131,11 @@ const Index: NextPage = () => (
         <Currency></Currency>
         <MonthPicker></MonthPicker>
       </InputContainer>
+
+      <MonthlyAmount>
+        <Span color='gray-100'>Monthly amount</Span>
+        <Span color='secondary'>$520.50</Span>
+      </MonthlyAmount>
 
       <ConfirmBox>
         <Button>Confirm</Button>
