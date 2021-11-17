@@ -5,11 +5,11 @@ import { Box } from '../box'
 import { Label } from '../typography'
 
 interface CurrencyProps {
-  onChange?: (value: any) => void
-  disabled?: boolean
-  type?: string
-  label?: string
-  name?: string
+  onChange?: (value: any) => void;
+  disabled?: boolean;
+  type?: string;
+  label?: string;
+  name?: string;
 }
 
 const CurrencyStyled = styled.input`

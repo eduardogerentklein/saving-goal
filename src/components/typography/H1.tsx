@@ -3,11 +3,11 @@ import styled from 'styled-components'
 import { Color, FontFamily } from '../../utils/constant'
 
 interface H1Props {
-  fontFamily?: string
-  fontSize?: string
-  fontWeight?: string
-  color?: string
-  textAlign?: string
+  fontFamily?: string;
+  fontSize?: string;
+  fontWeight?: string;
+  color?: string;
+  textAlign?: string;
 }
 
 export const H1 = styled.h1<H1Props>`

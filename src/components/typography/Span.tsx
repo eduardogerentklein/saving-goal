@@ -3,11 +3,11 @@ import styled from 'styled-components'
 import { Color, FontFamily } from '../../utils/constant'
 
 interface SpanProps {
-  fontFamily?: string
-  fontSize?: string
-  fontWeight?: number
-  color?: string
-  textAlign?: string
+  fontFamily?: string;
+  fontSize?: string;
+  fontWeight?: number;
+  color?: string;
+  textAlign?: string;
 }
 
 export const Span = styled.span<SpanProps>`
