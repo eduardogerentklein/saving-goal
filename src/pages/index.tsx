@@ -31,15 +31,25 @@ const TitleBox = styled(Box)`
 
 const StyledBox = styled(Box)`
   background-color: var(--white-color-25);
-  padding: 35px 40px 35px 40px;
+  box-shadow: 0px 16px 32px rgba(30, 42, 50, 0.08);
+  border-radius: var(--border-radius-2);
+
+  padding-top: var(--spacing-7);
+  padding-bottom: var(--spacing-7);
+  padding-left: var(--spacing-8);
+  padding-right: var(--spacing-8);
 
   @media (max-width: 640px) {
-    padding: 35px 24px 35px 24px;
+    padding-left: var(--spacing-4);
+    padding-right: var(--spacing-4);
   }
 `
 
 const StyledH1 = styled(H1)`
   padding-bottom: 24px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+
   @media (max-width: 640px) {
     font-size: 18px;
     line-height: 21.6px;
@@ -98,7 +108,24 @@ const SavingGoalText = styled(Span)`
   }
 `
 
-const MonthlyAmount = styled(Box)`
+const MonthlyAmountBox = styled(Box)`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: var(--spacing-6);
+  padding-bottom: var(--spacing-6);
+  padding-left: var(--spacing-6);
+  padding-right: var(--spacing-6);
+
+  @media (max-width: 640px) {
+    padding-left: var(--spacing-4);
+    padding-right: var(--spacing-4);
+  }
+`
+
+const MonthlyAmountContainer = styled(Box)`
+  margin-bottom: var(--spacing-6);
+
   background-color: var(--white-color-25);
   border-radius: var(--border-radius-2);
 
@@ -107,6 +134,42 @@ const MonthlyAmount = styled(Box)`
   border-color: var(--white-color-75);
 
   box-shadow: 0px 16px 32px rgba(30, 42, 50, 0.08);
+`
+
+const AmountText = styled(Span)`
+  padding-left: var(--spacing-1);
+  padding-right: var(--spacing-1);
+
+  font-size: var(--font-size-5);
+  line-height: 24px;
+
+  @media (max-width: 640px) {
+    font-size: var(--font-size-4);
+    line-height: 21.6px;
+  }
+`
+
+const AmountCurrency = styled(Span)`
+  padding-left: var(--spacing-1);
+  padding-right: var(--spacing-1);
+
+  font-weight: var(--font-weight-3);
+  font-size: var(--font-size-7);
+  line-height: 38px;
+
+  @media (max-width: 640px) {
+    font-size: var(--font-size-6);
+    line-height: 28.8px;
+  }
+`
+
+const PlanningGoalBox = styled(Box)`
+  background-color: var(--white-color-50);
+
+  padding-top: var(--spacing-4);
+  padding-bottom: var(--spacing-4);
+  padding-left: var(--spacing-6);
+  padding-right: var(--spacing-6);
 `
 
 const Index: NextPage = () => (
@@ -132,10 +195,18 @@ const Index: NextPage = () => (
         <MonthPicker></MonthPicker>
       </InputContainer>
 
-      <MonthlyAmount>
-        <Span color='gray-100'>Monthly amount</Span>
-        <Span color='secondary'>$520.50</Span>
-      </MonthlyAmount>
+      <MonthlyAmountContainer>
+        <MonthlyAmountBox>
+          <AmountText color='gray-100'>Monthly amount</AmountText>
+          <AmountCurrency color='secondary'>$0</AmountCurrency>
+        </MonthlyAmountBox>
+        <PlanningGoalBox>
+          <Span>
+            You’re planning 1 monthly deposits to reach your $0 goal by November
+            2021.
+          </Span>
+        </PlanningGoalBox>
+      </MonthlyAmountContainer>
 
       <ConfirmBox>
         <Button>Confirm</Button>

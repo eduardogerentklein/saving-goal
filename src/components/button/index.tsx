@@ -1,13 +1,13 @@
 import styled from 'styled-components'
 
-import { Color } from '../../utils/constant'
+import { Color, FontFamily } from '../../utils/constant'
 
 interface ButtonProps {
-  backgroundColor?: string;
-  color?: string;
-  width?: string;
-  fontWeight?: number;
-  disabled?: boolean;
+  backgroundColor?: string
+  color?: string
+  width?: string
+  fontWeight?: number
+  disabled?: boolean
 }
 
 export const Button = styled.button<ButtonProps>`
@@ -21,6 +21,7 @@ export const Button = styled.button<ButtonProps>`
   padding-right: var(--spacing-3);
   border-radius: var(--border-radius-5);
 
+  font-family: ${FontFamily['workSans']};
   font-weight: ${props => props.fontWeight};
   color: ${props => `var(${Color[props.color || 'white-25']})`};
   background-color: ${props => props.backgroundColor};
