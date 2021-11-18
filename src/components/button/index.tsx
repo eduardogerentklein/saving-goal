@@ -3,11 +3,11 @@ import styled from 'styled-components'
 import { Color, FontFamily } from '../../utils/constant'
 
 interface ButtonProps {
-  backgroundColor?: string
-  color?: string
-  width?: string
-  fontWeight?: number
-  disabled?: boolean
+  backgroundColor?: string;
+  color?: string;
+  width?: string;
+  fontWeight?: number;
+  disabled?: boolean;
 }
 
 export const Button = styled.button<ButtonProps>`
