@@ -201,9 +201,13 @@ const Index: NextPage = () => (
           <AmountCurrency color='secondary'>$0</AmountCurrency>
         </MonthlyAmountBox>
         <PlanningGoalBox>
-          <Span>
-            You’re planning 1 monthly deposits to reach your $0 goal by November
-            2021.
+          <Span color='gray-100'>
+            You’re planning&nbsp;
+            <Span>1</Span> monthly deposits
+            <Span>to reach your&nbsp;</Span>
+            <Span>$0&nbsp;</Span>
+            <Span>goal by&nbsp;</Span>
+            <Span>November 2021.</Span>
           </Span>
         </PlanningGoalBox>
       </MonthlyAmountContainer>
