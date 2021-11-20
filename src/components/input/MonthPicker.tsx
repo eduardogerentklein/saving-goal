@@ -114,7 +114,7 @@ export const MonthPicker = () => {
         </ToggleLeftButton>
 
         <MonthYearBox>
-          <Month>February</Month>
+          <Month>November</Month>
           <Year as='small'>2021</Year>
         </MonthYearBox>
 

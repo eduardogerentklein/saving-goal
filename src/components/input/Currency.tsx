@@ -5,11 +5,11 @@ import { Box } from '../box'
 import { Label } from '../typography'
 
 interface CurrencyProps {
-  onChange?: (value: any) => void;
-  disabled?: boolean;
-  type?: string;
-  label?: string;
-  name?: string;
+  onChange?: (value: any) => void
+  disabled?: boolean
+  type?: string
+  label?: string
+  name?: string
 }
 
 const CurrencyStyled = styled.input`
@@ -49,8 +49,8 @@ const CurrencyStyled = styled.input`
 
 const ImageContainer = styled(Box)`
   position: absolute;
-  top: 40px !important;
-  left: 15px !important;
+  top: 41px !important;
+  left: 16px !important;
 `
 
 const Container = styled(Box)`
@@ -87,7 +87,7 @@ export const Currency = ({
 )
 
 Currency.defaultProps = {
-  type: 'number',
+  type: 'text',
   disabled: false,
   label: 'Total amount',
   name: 'amount'

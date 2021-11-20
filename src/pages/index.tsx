@@ -132,8 +132,6 @@ const MonthlyAmountContainer = styled(Box)`
   border-width: 1px;
   border-style: solid;
   border-color: var(--white-color-75);
-
-  box-shadow: 0px 16px 32px rgba(30, 42, 50, 0.08);
 `
 
 const AmountText = styled(Span)`
@@ -172,11 +170,28 @@ const PlanningGoalBox = styled(Box)`
   padding-right: var(--spacing-6);
 `
 
+const PlanningText = styled(Span)`
+  margin-top: 0px;
+  margin-bottom: 0px;
+
+  text-align: left;
+  font-size: var(--font-size-1);
+  line-height: var(--line-height-1);
+  @media (max-width: 640px) {
+    text-align: center;
+  }
+`
+
+const GoalText = styled(Span)`
+  font-size: var(--font-size-1);
+  line-height: var(--line-height-1);
+  font-weight: var(--font-weight-3);
+`
+
 const Index: NextPage = () => (
   <Main>
     <StyledH1>
-      Let's plan your&nbsp;
-      <StyledSpan fontWeight={600}>saving goal.</StyledSpan>
+      Let's plan your <StyledSpan fontWeight={600}>saving goal.</StyledSpan>
     </StyledH1>
     <StyledBox>
       <TitleBox>
@@ -201,14 +216,12 @@ const Index: NextPage = () => (
           <AmountCurrency color='secondary'>$0</AmountCurrency>
         </MonthlyAmountBox>
         <PlanningGoalBox>
-          <Span color='gray-100'>
-            You’re planning&nbsp;
-            <Span>1</Span> monthly deposits
-            <Span>to reach your&nbsp;</Span>
-            <Span>$0&nbsp;</Span>
-            <Span>goal by&nbsp;</Span>
-            <Span>November 2021.</Span>
-          </Span>
+          <PlanningText as='p' color='gray-100'>
+            You’re planning{' '}
+            <GoalText color='gray-100'>1 monthly deposits </GoalText>
+            to reach your <GoalText color='gray-100'>$0 </GoalText>
+            goal by <GoalText color='gray-100'>December 2021.</GoalText>
+          </PlanningText>
         </PlanningGoalBox>
       </MonthlyAmountContainer>
 
