@@ -1,8 +1,8 @@
-import styled from 'styled-components'
-import Image from 'next/image'
+import styled from 'styled-components';
+import Image from 'next/image';
 
-import { Box } from '../box'
-import { Label } from '../typography'
+import { Box } from '../box';
+import { Label } from '../typography';
 
 interface CurrencyProps {
   onChange?: (value: any) => void;
@@ -45,18 +45,22 @@ const CurrencyStyled = styled.input`
     margin-bottom: var(--spacing-3);
     margin-right: 0;
   }
-`
+`;
 
 const ImageContainer = styled(Box)`
   position: absolute;
   top: 41px !important;
   left: 16px !important;
-`
+`;
 
 const Container = styled(Box)`
   position: relative;
   margin-right: var(--spacing-3);
-`
+
+  @media (max-width: 640px) {
+    margin-right: 0px;
+  }
+`;
 
 export const Currency = ({
   onChange,
@@ -84,11 +88,11 @@ export const Currency = ({
       aria-label={label}
     ></CurrencyStyled>
   </Container>
-)
+);
 
 Currency.defaultProps = {
   type: 'text',
   disabled: false,
   label: 'Total amount',
   name: 'amount'
-}
+};
