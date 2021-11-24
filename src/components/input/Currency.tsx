@@ -1,3 +1,7 @@
+import CurrencyInputField, {
+  CurrencyInputProps
+} from 'react-currency-input-field';
+
 import styled from 'styled-components';
 import Image from 'next/image';
 
@@ -7,7 +11,6 @@ import { Label } from '../typography';
 interface CurrencyProps {
   onChange?: (value: any) => void;
   disabled?: boolean;
-  type?: string;
   label?: string;
   name?: string;
   value?: string | number;
@@ -63,10 +66,16 @@ const Container = styled(Box)`
   }
 `;
 
+const options = {
+  groupSeparator: ',',
+  decimalSeparator: '.',
+  allowNegativeValue: false,
+  defaultValue: ''
+};
+
 export const Currency = ({
   onChange,
   disabled,
-  type,
   name,
   label,
   value
@@ -82,19 +91,19 @@ export const Currency = ({
     </ImageContainer>
     <Label htmlFor={name}>{label}</Label>
     <CurrencyStyled
+      as={CurrencyInputField}
       id={name}
       name={name}
-      type={type}
       value={value}
       disabled={disabled}
-      onChange={onChange}
+      onValueChange={onChange}
       aria-label={label}
+      {...options}
     ></CurrencyStyled>
   </Container>
 );
 
 Currency.defaultProps = {
-  type: 'text',
   disabled: false,
   label: 'Total amount',
   name: 'amount'

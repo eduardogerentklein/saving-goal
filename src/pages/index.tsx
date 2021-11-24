@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import styled from 'styled-components';
 
 import type { NextPage } from 'next';
 import Image from 'next/image';
+
+import { formatValue } from 'react-currency-input-field';
 
 import { Box } from '../components/box';
 import { Button } from '../components/button';
@@ -191,12 +193,27 @@ const GoalText = styled(Span)`
 `;
 
 const Index: NextPage = () => {
-  const [currency, setCurrency] = useState('');
+  const [amount, setAmount] = useState('');
+  const [formattedAmount, setFormattedAmount] = useState('');
 
-  const handleAmountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { value } = e.target;
-    setCurrency(value);
+  const handleAmountChange = (value: string) => {
+    setAmount(value);
   };
+
+  const options = {
+    groupSeparator: ',',
+    decimalSeparator: '.'
+  };
+
+  useEffect(() => {
+    const value = formatValue({
+      ...options,
+      value: amount,
+      decimalScale: parseFloat(amount) % 1 != 0 ? 2 : 0,
+      prefix: '$'
+    });
+    setFormattedAmount(value);
+  }, [amount]);
 
   return (
     <Main>
@@ -224,7 +241,7 @@ const Index: NextPage = () => {
           <Currency
             onChange={handleAmountChange}
             name='amount'
-            value={currency}
+            value={amount}
           ></Currency>
           <MonthPicker></MonthPicker>
         </InputContainer>
@@ -232,14 +249,14 @@ const Index: NextPage = () => {
         <MonthlyAmountContainer>
           <MonthlyAmountBox>
             <AmountText color='gray-100'>Monthly amount</AmountText>
-            <AmountCurrency color='secondary'>${currency || 0}</AmountCurrency>
+            <AmountCurrency color='secondary'>{formattedAmount}</AmountCurrency>
           </MonthlyAmountBox>
           <PlanningGoalBox>
             <PlanningText as='p' color='gray-100'>
               You’re planning{' '}
               <GoalText color='gray-100'>1 monthly deposits </GoalText>
               to reach your{' '}
-              <GoalText color='gray-100'>${currency || 0} </GoalText>
+              <GoalText color='gray-100'>{formattedAmount} </GoalText>
               goal by <GoalText color='gray-100'>December 2021.</GoalText>
             </PlanningText>
           </PlanningGoalBox>
