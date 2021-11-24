@@ -10,6 +10,7 @@ interface CurrencyProps {
   type?: string;
   label?: string;
   name?: string;
+  value?: string | number;
 }
 
 const CurrencyStyled = styled.input`
@@ -67,9 +68,10 @@ export const Currency = ({
   disabled,
   type,
   name,
-  label
+  label,
+  value
 }: CurrencyProps) => (
-  <Container>
+  <Container aria-label='Currency box'>
     <ImageContainer>
       <Image
         src='/icons/dollar-sign.svg'
@@ -83,6 +85,7 @@ export const Currency = ({
       id={name}
       name={name}
       type={type}
+      value={value}
       disabled={disabled}
       onChange={onChange}
       aria-label={label}

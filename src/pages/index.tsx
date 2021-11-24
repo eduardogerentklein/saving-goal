@@ -1,12 +1,14 @@
-import styled from 'styled-components'
+import React, { useState } from 'react';
 
-import type { NextPage } from 'next'
-import Image from 'next/image'
+import styled from 'styled-components';
 
-import { Box } from '../components/box'
-import { Button } from '../components/button'
-import { Currency, MonthPicker } from '../components/input'
-import { Span, H1 } from '../components/typography'
+import type { NextPage } from 'next';
+import Image from 'next/image';
+
+import { Box } from '../components/box';
+import { Button } from '../components/button';
+import { Currency, MonthPicker } from '../components/input';
+import { Span, H1 } from '../components/typography';
 
 const Main = styled.main`
   padding-top: 48px;
@@ -21,13 +23,13 @@ const Main = styled.main`
     padding-left: 0px;
     padding-right: 0px;
   }
-`
+`;
 
 const TitleBox = styled(Box)`
   display: flex;
   align-items: center;
   margin-bottom: var(--spacing-5);
-`
+`;
 
 const StyledBox = styled(Box)`
   background-color: var(--white-color-25);
@@ -43,7 +45,7 @@ const StyledBox = styled(Box)`
     padding-left: var(--spacing-4);
     padding-right: var(--spacing-4);
   }
-`
+`;
 
 const StyledH1 = styled(H1)`
   padding-bottom: 24px;
@@ -54,14 +56,14 @@ const StyledH1 = styled(H1)`
     font-size: 18px;
     line-height: 21.6px;
   }
-`
+`;
 
 const StyledSpan = styled(Span)`
   @media (max-width: 640px) {
     font-size: 18px;
     line-height: 21.6px;
   }
-`
+`;
 
 const InputContainer = styled(Box)`
   display: flex;
@@ -70,12 +72,12 @@ const InputContainer = styled(Box)`
   @media (max-width: 640px) {
     flex-direction: column;
   }
-`
+`;
 
 const ConfirmBox = styled(Box)`
   display: flex;
   justify-content: center;
-`
+`;
 
 const GoalBox = styled(Box)`
   display: flex;
@@ -84,7 +86,7 @@ const GoalBox = styled(Box)`
   align-items: start;
 
   margin-left: var(--spacing-4);
-`
+`;
 
 const HouseText = styled(Span)`
   font-weight: var(--font-weight-2);
@@ -96,7 +98,7 @@ const HouseText = styled(Span)`
     font-size: var(--font-size-5);
     line-height: 24px;
   }
-`
+`;
 
 const SavingGoalText = styled(Span)`
   font-size: var(--font-size-3);
@@ -106,7 +108,7 @@ const SavingGoalText = styled(Span)`
     font-size: var(--font-size-2);
     line-height: 21px;
   }
-`
+`;
 
 const MonthlyAmountBox = styled(Box)`
   display: flex;
@@ -121,7 +123,7 @@ const MonthlyAmountBox = styled(Box)`
     padding-left: var(--spacing-4);
     padding-right: var(--spacing-4);
   }
-`
+`;
 
 const MonthlyAmountContainer = styled(Box)`
   margin-bottom: var(--spacing-6);
@@ -132,7 +134,7 @@ const MonthlyAmountContainer = styled(Box)`
   border-width: 1px;
   border-style: solid;
   border-color: var(--white-color-75);
-`
+`;
 
 const AmountText = styled(Span)`
   padding-left: var(--spacing-1);
@@ -145,7 +147,7 @@ const AmountText = styled(Span)`
     font-size: var(--font-size-4);
     line-height: 21.6px;
   }
-`
+`;
 
 const AmountCurrency = styled(Span)`
   padding-left: var(--spacing-1);
@@ -159,7 +161,7 @@ const AmountCurrency = styled(Span)`
     font-size: var(--font-size-6);
     line-height: 28.8px;
   }
-`
+`;
 
 const PlanningGoalBox = styled(Box)`
   background-color: var(--white-color-50);
@@ -168,7 +170,7 @@ const PlanningGoalBox = styled(Box)`
   padding-bottom: var(--spacing-4);
   padding-left: var(--spacing-6);
   padding-right: var(--spacing-6);
-`
+`;
 
 const PlanningText = styled(Span)`
   margin-top: 0px;
@@ -180,56 +182,75 @@ const PlanningText = styled(Span)`
   @media (max-width: 640px) {
     text-align: center;
   }
-`
+`;
 
 const GoalText = styled(Span)`
   font-size: var(--font-size-1);
   line-height: var(--line-height-1);
   font-weight: var(--font-weight-3);
-`
+`;
 
-const Index: NextPage = () => (
-  <Main>
-    <StyledH1>
-      Let's plan your <StyledSpan fontWeight={600}>saving goal.</StyledSpan>
-    </StyledH1>
-    <StyledBox>
-      <TitleBox>
-        <Image src='/icons/house.svg' alt='House icon' width={64} height={64} />
+const Index: NextPage = () => {
+  const [currency, setCurrency] = useState('');
 
-        <GoalBox>
-          <HouseText color='gray-100' fontFamily='rubik'>
-            Buy a house
-          </HouseText>
-          <SavingGoalText color='gray-25'>Saving goal</SavingGoalText>
-        </GoalBox>
-      </TitleBox>
+  const handleAmountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { value } = e.target;
+    setCurrency(value);
+  };
 
-      <InputContainer>
-        <Currency></Currency>
-        <MonthPicker></MonthPicker>
-      </InputContainer>
+  return (
+    <Main>
+      <StyledH1>
+        Let's plan your <StyledSpan fontWeight={600}>saving goal.</StyledSpan>
+      </StyledH1>
+      <StyledBox>
+        <TitleBox>
+          <Image
+            src='/icons/house.svg'
+            alt='House icon'
+            width={64}
+            height={64}
+          />
 
-      <MonthlyAmountContainer>
-        <MonthlyAmountBox>
-          <AmountText color='gray-100'>Monthly amount</AmountText>
-          <AmountCurrency color='secondary'>$0</AmountCurrency>
-        </MonthlyAmountBox>
-        <PlanningGoalBox>
-          <PlanningText as='p' color='gray-100'>
-            You’re planning{' '}
-            <GoalText color='gray-100'>1 monthly deposits </GoalText>
-            to reach your <GoalText color='gray-100'>$0 </GoalText>
-            goal by <GoalText color='gray-100'>December 2021.</GoalText>
-          </PlanningText>
-        </PlanningGoalBox>
-      </MonthlyAmountContainer>
+          <GoalBox>
+            <HouseText color='gray-100' fontFamily='rubik'>
+              Buy a house
+            </HouseText>
+            <SavingGoalText color='gray-25'>Saving goal</SavingGoalText>
+          </GoalBox>
+        </TitleBox>
 
-      <ConfirmBox>
-        <Button>Confirm</Button>
-      </ConfirmBox>
-    </StyledBox>
-  </Main>
-)
+        <InputContainer>
+          <Currency
+            onChange={handleAmountChange}
+            name='amount'
+            value={currency}
+          ></Currency>
+          <MonthPicker></MonthPicker>
+        </InputContainer>
 
-export default Index
+        <MonthlyAmountContainer>
+          <MonthlyAmountBox>
+            <AmountText color='gray-100'>Monthly amount</AmountText>
+            <AmountCurrency color='secondary'>${currency || 0}</AmountCurrency>
+          </MonthlyAmountBox>
+          <PlanningGoalBox>
+            <PlanningText as='p' color='gray-100'>
+              You’re planning{' '}
+              <GoalText color='gray-100'>1 monthly deposits </GoalText>
+              to reach your{' '}
+              <GoalText color='gray-100'>${currency || 0} </GoalText>
+              goal by <GoalText color='gray-100'>December 2021.</GoalText>
+            </PlanningText>
+          </PlanningGoalBox>
+        </MonthlyAmountContainer>
+
+        <ConfirmBox>
+          <Button>Confirm</Button>
+        </ConfirmBox>
+      </StyledBox>
+    </Main>
+  );
+};
+
+export default Index;
