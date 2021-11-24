@@ -7,10 +7,10 @@ import Image from 'next/image';
 
 import { formatValue } from 'react-currency-input-field';
 
-import { Box } from '../components/box';
-import { Button } from '../components/button';
-import { Currency, MonthPicker } from '../components/input';
-import { Span, H1 } from '../components/typography';
+import { Box } from '@Components/box';
+import { Button } from '@Components/button';
+import { Currency, MonthPicker } from '@Components/input';
+import { Span, H1 } from '@Components/typography';
 
 const Main = styled.main`
   padding-top: 48px;
