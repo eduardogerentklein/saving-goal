@@ -1,3 +1,6 @@
+import { useState } from 'react';
+
+import { add, sub, getMonth, getYear } from 'date-fns';
 import styled from 'styled-components';
 import Image from 'next/image';
 
@@ -95,7 +98,17 @@ const Year = styled(Span)`
   }
 `;
 
-export const MonthPicker = () => {
+interface MonthProps {
+  onChange?: (value: Date) => void;
+}
+
+export const MonthPicker = ({ onChange }: MonthProps) => {
+  const [reachDate, setReachDate] = useState(new Date());
+
+  const handleClick = (date: any) => {
+    onChange?.(date);
+    setReachDate(sub(date, { months: 1 }));
+  };
   return (
     <Box>
       <Label>Reach goal by</Label>
@@ -104,6 +117,7 @@ export const MonthPicker = () => {
           type='button'
           title='Back month button'
           aria-label='Back month button'
+          onClick={(date): any => handleClick?.(date)}
         >
           <Image
             src='/icons/chevron-left.svg'
