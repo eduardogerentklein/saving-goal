@@ -1,8 +1,8 @@
-import styled from 'styled-components'
-import Image from 'next/image'
+import styled from 'styled-components';
+import Image from 'next/image';
 
-import { Span, Label } from '../typography'
-import { Box } from '../box'
+import { Span, Label } from '@Components/typography';
+import { Box } from '@Components/box';
 
 const Container = styled(Box)`
   display: flex;
@@ -24,7 +24,7 @@ const Container = styled(Box)`
   width: 100%;
   min-width: 220px;
   height: 56px;
-`
+`;
 
 const ToggleButton = styled.button`
   all: unset;
@@ -54,11 +54,11 @@ const ToggleButton = styled.button`
     padding-left: 12px;
     padding-right: 12px;
   }
-`
+`;
 
-const ToggleLeftButton = styled(ToggleButton)``
+const ToggleLeftButton = styled(ToggleButton)``;
 
-const ToggleRightButton = styled(ToggleButton)``
+const ToggleRightButton = styled(ToggleButton)``;
 
 const MonthYearBox = styled(Box)`
   display: flex;
@@ -67,7 +67,7 @@ const MonthYearBox = styled(Box)`
 
   padding-top: var(--spacing-1);
   padding-bottom: var(--spacing-1);
-`
+`;
 
 const Month = styled(Span)`
   display: flex;
@@ -82,7 +82,7 @@ const Month = styled(Span)`
     font-size: var(--font-size-2);
     line-height: var(--line-height-3);
   }
-`
+`;
 
 const Year = styled(Span)`
   color: var(--gray-color-25);
@@ -93,7 +93,7 @@ const Year = styled(Span)`
     font-size: var(--font-size-1);
     line-height: var(--line-height-1);
   }
-`
+`;
 
 export const MonthPicker = () => {
   return (
@@ -132,5 +132,5 @@ export const MonthPicker = () => {
         </ToggleRightButton>
       </Container>
     </Box>
-  )
-}
+  );
+};

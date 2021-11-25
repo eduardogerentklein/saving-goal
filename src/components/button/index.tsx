@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { Color, FontFamily } from '../../utils/constant';
+import { Color, FontFamily } from '@Utils/literals';
 
 interface ButtonProps {
   backgroundColor?: string;

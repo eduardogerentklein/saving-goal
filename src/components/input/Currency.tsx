@@ -1,12 +1,10 @@
-import CurrencyInputField, {
-  CurrencyInputProps
-} from 'react-currency-input-field';
+import CurrencyInputField from 'react-currency-input-field';
 
 import styled from 'styled-components';
 import Image from 'next/image';
 
-import { Box } from '../box';
-import { Label } from '../typography';
+import { Box } from '@Components/box';
+import { Label } from '@Components/typography';
 
 interface CurrencyProps {
   onChange?: (value: any) => void;

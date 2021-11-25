@@ -1,8 +1,8 @@
-export type ObjectLiteralsProps = {
-  [key: string]: string
-}
+export type GenericLiteralProps = {
+  [key: string]: string;
+};
 
-export const Color: ObjectLiteralsProps = {
+export const Color: GenericLiteralProps = {
   primary: '--primary-color',
   secondary: '--secondary-color',
   'white-25': '--white-color-25',
@@ -13,9 +13,9 @@ export const Color: ObjectLiteralsProps = {
   'gray-50': '--gray-color-50',
   'gray-75': '--gray-color-75',
   'gray-100': '--gray-color-100'
-}
+};
 
-export const FontFamily: ObjectLiteralsProps = {
+export const FontFamily: GenericLiteralProps = {
   workSans: 'Work Sans, sans-serif',
   rubik: 'Rubik, sans-serif'
-}
+};

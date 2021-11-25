@@ -212,7 +212,7 @@ const Index: NextPage = () => {
       decimalScale: parseFloat(amount) % 1 != 0 ? 2 : 0,
       prefix: '$'
     });
-    setFormattedAmount(value);
+    setFormattedAmount(value || '$0');
   }, [amount]);
 
   return (
