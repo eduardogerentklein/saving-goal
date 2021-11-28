@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
+import { format, getMonth, getYear } from 'date-fns';
 import styled from 'styled-components';
 
 import type { NextPage } from 'next';
@@ -193,11 +194,21 @@ const GoalText = styled(Span)`
 `;
 
 const Index: NextPage = () => {
-  const [amount, setAmount] = useState('');
+  const { current } = useRef(new Date());
+
   const [formattedAmount, setFormattedAmount] = useState('');
+  const [formattedMonth, setFormattedMonth] = useState('');
+  const [reachDate, setReachDate] = useState(current);
+  const [month, setMonth] = useState<Number>(0);
+  const [year, setYear] = useState<Number>();
+  const [amount, setAmount] = useState('');
 
   const handleAmountChange = (value: string) => {
     setAmount(value);
+  };
+
+  const handleMonthChange = (date: Date) => {
+    setReachDate(date);
   };
 
   const options = {
@@ -214,6 +225,13 @@ const Index: NextPage = () => {
     });
     setFormattedAmount(value || '$0');
   }, [amount]);
+
+  useEffect(() => {
+    const dateMonth = getMonth(reachDate);
+    setMonth(dateMonth);
+    setFormattedMonth(format(reachDate, 'MMMM'));
+    setYear(getYear(reachDate));
+  }, [reachDate]);
 
   return (
     <Main>
@@ -243,7 +261,12 @@ const Index: NextPage = () => {
             name='amount'
             value={amount}
           ></Currency>
-          <MonthPicker></MonthPicker>
+          <MonthPicker
+            initialState={current}
+            onChange={handleMonthChange}
+            month={formattedMonth}
+            year={year}
+          />
         </InputContainer>
 
         <MonthlyAmountContainer>
@@ -254,10 +277,13 @@ const Index: NextPage = () => {
           <PlanningGoalBox>
             <PlanningText as='p' color='gray-100'>
               You’re planning{' '}
-              <GoalText color='gray-100'>1 monthly deposits </GoalText>
+              <GoalText color='gray-100'>{month} monthly deposits </GoalText>
               to reach your{' '}
               <GoalText color='gray-100'>{formattedAmount} </GoalText>
-              goal by <GoalText color='gray-100'>December 2021.</GoalText>
+              goal by{' '}
+              <GoalText color='gray-100'>
+                {formattedMonth} {year}.
+              </GoalText>
             </PlanningText>
           </PlanningGoalBox>
         </MonthlyAmountContainer>

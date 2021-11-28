@@ -1,6 +1,6 @@
-import { useState } from 'react';
+import { useState, KeyboardEvent } from 'react';
 
-import { add, sub, getMonth, getYear } from 'date-fns';
+import { add, sub } from 'date-fns';
 import styled from 'styled-components';
 import Image from 'next/image';
 
@@ -100,15 +100,35 @@ const Year = styled(Span)`
 
 interface MonthProps {
   onChange?: (value: Date) => void;
+  initialState: Date;
+  month?: string;
+  year?: Number;
 }
 
-export const MonthPicker = ({ onChange }: MonthProps) => {
-  const [reachDate, setReachDate] = useState(new Date());
-
-  const handleClick = (date: any) => {
-    onChange?.(date);
-    setReachDate(sub(date, { months: 1 }));
+export const MonthPicker = ({
+  onChange,
+  initialState,
+  month,
+  year
+}: MonthProps) => {
+  const [reachDate, setReachDate] = useState(initialState);
+  const handleDownMonth = () => {
+    setReachDate(sub(reachDate, { months: 1 }));
+    onChange?.(reachDate);
   };
+  const handleForwardMonth = () => {
+    setReachDate(add(reachDate, { months: 1 }));
+    onChange?.(reachDate);
+  };
+
+  const handleKeyPress = (e: KeyboardEvent) => {
+    if (e.code === 'ArrowLeft') {
+      handleDownMonth();
+    } else if (e.code === 'ArrowRight') {
+      handleForwardMonth();
+    }
+  };
+
   return (
     <Box>
       <Label>Reach goal by</Label>
@@ -117,7 +137,8 @@ export const MonthPicker = ({ onChange }: MonthProps) => {
           type='button'
           title='Back month button'
           aria-label='Back month button'
-          onClick={(date): any => handleClick?.(date)}
+          onClick={() => handleDownMonth?.()}
+          onKeyDown={(e: KeyboardEvent) => handleKeyPress?.(e)}
         >
           <Image
             src='/icons/chevron-left.svg'
@@ -128,14 +149,16 @@ export const MonthPicker = ({ onChange }: MonthProps) => {
         </ToggleLeftButton>
 
         <MonthYearBox>
-          <Month>November</Month>
-          <Year as='small'>2021</Year>
+          <Month>{month}</Month>
+          <Year as='small'>{year}</Year>
         </MonthYearBox>
 
         <ToggleRightButton
           type='button'
           title='Forward month button'
           aria-label='Forward month button'
+          onClick={() => handleForwardMonth?.()}
+          onKeyDown={(e: KeyboardEvent) => handleKeyPress?.(e)}
         >
           <Image
             src='/icons/chevron-right.svg'
