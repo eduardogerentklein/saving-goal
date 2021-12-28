@@ -113,8 +113,11 @@ export const MonthPicker = ({
 }: MonthProps) => {
   const [reachDate, setReachDate] = useState(initialState);
   const handleDownMonth = () => {
-    setReachDate(sub(reachDate, { months: 1 }));
-    onChange?.(reachDate);
+    const subDate = sub(reachDate, { months: 1 });
+    if (initialState <= subDate) {
+      setReachDate(subDate);
+      onChange?.(reachDate);
+    }
   };
   const handleForwardMonth = () => {
     setReachDate(add(reachDate, { months: 1 }));

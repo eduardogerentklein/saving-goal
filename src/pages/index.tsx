@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 
-import { format, getMonth, getYear } from 'date-fns';
+import { format, getMonth, getYear, differenceInMonths } from 'date-fns';
 import styled from 'styled-components';
 
 import type { NextPage } from 'next';
@@ -198,10 +198,12 @@ const Index: NextPage = () => {
 
   const [formattedAmount, setFormattedAmount] = useState('');
   const [formattedMonth, setFormattedMonth] = useState('');
+  const [monthlyAmount, setMonthlyAmount] = useState('');
   const [reachDate, setReachDate] = useState(current);
   const [month, setMonth] = useState<Number>(0);
   const [year, setYear] = useState<Number>();
   const [amount, setAmount] = useState('');
+  const [monthlyDeposits, setMonthlyDeposits] = useState<Number>(0);
 
   const handleAmountChange = (value: string) => {
     setAmount(value);
@@ -231,6 +233,7 @@ const Index: NextPage = () => {
     setMonth(dateMonth);
     setFormattedMonth(format(reachDate, 'MMMM'));
     setYear(getYear(reachDate));
+    setMonthlyDeposits(differenceInMonths(reachDate, current) + 1);
   }, [reachDate]);
 
   return (
@@ -277,7 +280,9 @@ const Index: NextPage = () => {
           <PlanningGoalBox>
             <PlanningText as='p' color='gray-100'>
               You’re planning{' '}
-              <GoalText color='gray-100'>{month} monthly deposits </GoalText>
+              <GoalText color='gray-100'>
+                {monthlyDeposits} monthly deposits{' '}
+              </GoalText>
               to reach your{' '}
               <GoalText color='gray-100'>{formattedAmount} </GoalText>
               goal by{' '}
