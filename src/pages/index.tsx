@@ -198,12 +198,10 @@ const Index: NextPage = () => {
 
   const [formattedAmount, setFormattedAmount] = useState('');
   const [formattedMonth, setFormattedMonth] = useState('');
-  const [monthlyAmount, setMonthlyAmount] = useState('');
   const [reachDate, setReachDate] = useState(current);
-  const [month, setMonth] = useState<Number>(0);
   const [year, setYear] = useState<Number>();
   const [amount, setAmount] = useState('');
-  const [monthlyDeposits, setMonthlyDeposits] = useState<Number>(0);
+  const [monthlyDeposits, setMonthlyDeposits] = useState(0);
 
   const handleAmountChange = (value: string) => {
     setAmount(value);
@@ -219,22 +217,23 @@ const Index: NextPage = () => {
   };
 
   useEffect(() => {
-    const value = formatValue({
-      ...options,
-      value: amount,
-      decimalScale: parseFloat(amount) % 1 != 0 ? 2 : 0,
-      prefix: '$'
-    });
-    setFormattedAmount(value || '$0');
-  }, [amount]);
-
-  useEffect(() => {
-    const dateMonth = getMonth(reachDate);
-    setMonth(dateMonth);
     setFormattedMonth(format(reachDate, 'MMMM'));
     setYear(getYear(reachDate));
     setMonthlyDeposits(differenceInMonths(reachDate, current) + 1);
   }, [reachDate]);
+
+  useEffect(() => {
+    const monthlyAmount = amount
+      ? String(parseFloat(amount) / monthlyDeposits)
+      : '';
+    const value = formatValue({
+      ...options,
+      value: monthlyAmount,
+      decimalScale: parseFloat(monthlyAmount) % 1 != 0 ? 2 : 0,
+      prefix: '$'
+    });
+    setFormattedAmount(value || '$0');
+  }, [amount, reachDate]);
 
   return (
     <Main>
