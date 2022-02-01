@@ -116,12 +116,13 @@ export const MonthPicker = ({
     const subDate = sub(reachDate, { months: 1 });
     if (initialState <= subDate) {
       setReachDate(subDate);
-      onChange?.(reachDate);
+      onChange?.(subDate);
     }
   };
   const handleForwardMonth = () => {
-    setReachDate(add(reachDate, { months: 1 }));
-    onChange?.(reachDate);
+    const addDate = add(reachDate, { months: 1 });
+    setReachDate(addDate);
+    onChange?.(addDate);
   };
 
   const handleKeyPress = (e: KeyboardEvent) => {

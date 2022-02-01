@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 
-import { format, getMonth, getYear, differenceInMonths } from 'date-fns';
+import { format, getYear, differenceInMonths } from 'date-fns';
 import styled from 'styled-components';
 
 import type { NextPage } from 'next';
@@ -233,7 +233,7 @@ const Index: NextPage = () => {
       prefix: '$'
     });
     setFormattedAmount(value || '$0');
-  }, [amount, reachDate]);
+  }, [amount, reachDate, monthlyDeposits]);
 
   return (
     <Main>
