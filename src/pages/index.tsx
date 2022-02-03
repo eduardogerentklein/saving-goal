@@ -193,15 +193,35 @@ const GoalText = styled(Span)`
   font-weight: var(--font-weight-3);
 `;
 
+const options = {
+  groupSeparator: ',',
+  decimalSeparator: '.'
+};
+
 const Index: NextPage = () => {
   const { current } = useRef(new Date());
 
-  const [formattedAmount, setFormattedAmount] = useState('');
   const [formattedMonth, setFormattedMonth] = useState('');
   const [reachDate, setReachDate] = useState(current);
   const [year, setYear] = useState<Number>();
   const [amount, setAmount] = useState('');
   const [monthlyDeposits, setMonthlyDeposits] = useState(0);
+
+  const formatAmount = (value: string) =>
+    formatValue({
+      ...options,
+      value: value,
+      decimalScale: parseFloat(value) % 1 != 0 ? 2 : 0,
+      prefix: '$'
+    });
+
+  const monthlyAmount = amount
+    ? String(parseFloat(amount) / monthlyDeposits)
+    : '0';
+
+  const formattedMonthlyAmount = formatAmount(monthlyAmount);
+
+  const formattedAmount = formatAmount(amount || '0');
 
   const handleAmountChange = (value: string) => {
     setAmount(value);
@@ -211,29 +231,11 @@ const Index: NextPage = () => {
     setReachDate(date);
   };
 
-  const options = {
-    groupSeparator: ',',
-    decimalSeparator: '.'
-  };
-
   useEffect(() => {
     setFormattedMonth(format(reachDate, 'MMMM'));
     setYear(getYear(reachDate));
     setMonthlyDeposits(differenceInMonths(reachDate, current) + 1);
   }, [reachDate]);
-
-  useEffect(() => {
-    const monthlyAmount = amount
-      ? String(parseFloat(amount) / monthlyDeposits)
-      : '';
-    const value = formatValue({
-      ...options,
-      value: monthlyAmount,
-      decimalScale: parseFloat(monthlyAmount) % 1 != 0 ? 2 : 0,
-      prefix: '$'
-    });
-    setFormattedAmount(value || '$0');
-  }, [amount, reachDate, monthlyDeposits]);
 
   return (
     <Main>
@@ -274,7 +276,9 @@ const Index: NextPage = () => {
         <MonthlyAmountContainer>
           <MonthlyAmountBox>
             <AmountText color='gray-100'>Monthly amount</AmountText>
-            <AmountCurrency color='secondary'>{formattedAmount}</AmountCurrency>
+            <AmountCurrency color='secondary'>
+              {formattedMonthlyAmount}
+            </AmountCurrency>
           </MonthlyAmountBox>
           <PlanningGoalBox>
             <PlanningText as='p' color='gray-100'>
