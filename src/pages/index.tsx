@@ -266,7 +266,7 @@ const Index: NextPage = () => {
             value={amount}
           ></Currency>
           <MonthPicker
-            initialState={current}
+            initialDate={current}
             onChange={handleMonthChange}
             month={formattedMonth}
             year={year}

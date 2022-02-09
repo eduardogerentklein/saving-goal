@@ -100,21 +100,21 @@ const Year = styled(Span)`
 
 interface MonthProps {
   onChange?: (value: Date) => void;
-  initialState: Date;
+  initialDate: Date;
   month?: string;
   year?: Number;
 }
 
 export const MonthPicker = ({
   onChange,
-  initialState,
+  initialDate,
   month,
   year
 }: MonthProps) => {
-  const [reachDate, setReachDate] = useState(initialState);
+  const [reachDate, setReachDate] = useState(initialDate);
   const handleDownMonth = () => {
     const subDate = sub(reachDate, { months: 1 });
-    if (initialState <= subDate) {
+    if (initialDate <= subDate) {
       setReachDate(subDate);
       onChange?.(subDate);
     }
